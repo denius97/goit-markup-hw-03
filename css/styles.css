@@ -15,6 +15,13 @@
   --main-bgc: #2f303a;
   --secondary-bgc: #f5f4fa;
   --accent-btn-bgc: var(--accent-txt-col);
+  --header-border: #ececec;
+  --portfolio-border: #eeeeee;
+  --hero-btn-focus: #188ce8;
+
+  /* flex */
+  --flex-gap: 30px;
+  --flex-quantity: 3;
 }
 
 body {
@@ -34,9 +41,12 @@ body {
 
 .list {
   list-style: none;
-  margin-block-start: 0;
-  margin-block-end: 0;
-  padding-inline-start: 0;
+}
+
+ul,
+ol {
+  margin: 0;
+  padding: 0;
 }
 
 h1,
@@ -91,19 +101,23 @@ img {
 
 .flex-list {
   display: flex;
-  gap: 30px;
+  gap: var(--flex-gap);
+  flex-wrap: wrap;
 }
 
+.flex-item {
+  flex-basis: calc(
+    (100% - (var(--flex-quantity) -1) * var(--flex-gap)) / var(--flex-quantity)
+  );
+}
 /* header  */
 
 .header {
-  border-bottom: 1px solid #ececec;
+  border-bottom: 1px solid var(--header-border);
 }
 .header-container {
   display: flex;
   align-items: center;
-  padding-top: 24px;
-  padding-bottom: 25px;
 }
 
 .logo {
@@ -112,6 +126,9 @@ img {
   font-size: 26px;
   line-height: 1.19;
   color: var(--accent-txt-col);
+}
+
+.header .logo {
   margin-right: 93px;
 }
 
@@ -136,8 +153,8 @@ img {
   font-weight: 500;
   line-height: 1.14;
   letter-spacing: 0.02em;
-  padding-top: 7px;
-  padding-bottom: 7px;
+  padding-top: 32px;
+  padding-bottom: 32px;
 }
 
 .header-link:hover,
@@ -152,10 +169,11 @@ img {
   padding-top: 200px;
   padding-bottom: 200px;
 }
-.hero-container {
+
+/* .hero-container {
   padding-left: 252px;
   padding-right: 252px;
-}
+} */
 
 .hero-title {
   font-weight: 900;
@@ -167,9 +185,9 @@ img {
   color: var(--light-txt-col);
   margin-bottom: 30px;
 
-  /* margin-left: auto;
+  margin-left: auto;
   margin-right: auto;
-  max-width: 696px; */
+  max-width: 600px;
 }
 
 .hero-btn {
@@ -195,9 +213,12 @@ img {
 
 .hero-btn:hover,
 .hero-btn:focus {
-  background-color: #188ce8;
+  background-color: var(--hero-btn-focus);
 }
 /* our advantages */
+.advantages {
+  --flex-quantity: 4;
+}
 
 .advantages-subtitle {
   font-weight: 700;
@@ -225,6 +246,7 @@ img {
 /* our team  */
 .our-team {
   background-color: var(--secondary-bgc);
+  --flex-quantity: 4;
 }
 
 .card-item {
@@ -280,13 +302,9 @@ img {
   background-color: var(--accent-btn-bgc);
 }
 
-.portfolio-list {
-  flex-wrap: wrap;
-}
-
 .portfolio-wrapper {
   padding: 20px 24px;
-  border: 1px solid #eeeeee;
+  border: 1px solid var(--portfolio-border);
   border-top: none;
 }
 .portfolio-subtitle {
@@ -314,8 +332,11 @@ img {
   color: var(--light-txt-col);
 }
 
+.footer .logo {
+  display: inline-block;
+  margin-bottom: 20px;
+}
 .address {
-  margin-top: 20px;
   font-style: inherit;
 }
 
